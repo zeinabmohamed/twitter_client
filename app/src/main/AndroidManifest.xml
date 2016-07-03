@@ -1,21 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gamila.zm.twitterclient">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".TwitterClientApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".TwitterClientApplication"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="edc59603085bed32e1b73fffcc1104979f96039b"
-            />
+            android:value="edc59603085bed32e1b73fffcc1104979f96039b" />
 
+        <activity
+            android:name=".view.activity.AuthrizationActivity"
+            android:label="@string/title_activity_authrization"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
