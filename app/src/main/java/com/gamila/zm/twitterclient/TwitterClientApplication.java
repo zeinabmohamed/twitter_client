@@ -3,9 +3,10 @@ package com.gamila.zm.twitterclient;
 import android.app.Application;
 
 import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.*;
 
 import io.fabric.sdk.android.Fabric;
+import timber.log.Timber;
 
 /**
  * Created by zeinab on 7/4/2016.
@@ -24,5 +25,26 @@ public class TwitterClientApplication  extends Application {
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Twitter(authConfig));
 
+        if(android.support.v4.BuildConfig.DEBUG){
+            Timber.plant(new Timber.DebugTree(){
+                @Override
+                protected String createStackElementTag(StackTraceElement element) {
+                    return super.createStackElementTag(element)+" : "+ element.getLineNumber();
+                }
+            });
+        }else {
+            Timber.plant(new ReleaseTimberTree());
+        }
+
     }
+
+
+
+
+
+
+
+
+
+
 }
